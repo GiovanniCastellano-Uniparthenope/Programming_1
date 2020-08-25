@@ -1,0 +1,65 @@
+<html xml:lang="en">
+<head>
+  <title>Gestione magazzino</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style1.css" />
+</head>
+
+<body>
+  <div id="main">
+	<div id="menubar">
+	  <div id="welcome">
+	    <h1><a href="#">Gestione magazzino</a></h1>
+	  </div>     
+	  <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="magazzinopanoramica.html">Progetto magazzino</a></li>
+          <li><a href="mainc2.html">main.c</a></li>
+          <li><a href="magazzinofunctionc.html">function.c</a></li>
+          <li><a href="magazzinoheaderh.html">header.h</a></li>
+          <li><a href="test2.html">Test</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+      <div id="wrapper">     
+        <h2></h2>
+        <img src="images/magazzino.jpg" alt="Viti" style="width:1120px;height:300px;">
+	  <div class="sidebar_container">       
+		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Descrizione del file</h2>
+            <p><b>Il file magazzinoheader.h presenta al suo interno le librerie utili al programma e i prototipi delle funzioni programmate
+            <br>
+            <br>
+            <br>Oltre le librerie standard c e standard i/o, l'header include la libreria string.h utile per la funzione che richiede di inserire una stringa per il settore, e la libreria permette di usare le sue funzioni per eseguire proprio le operazioni su stringhe.
+            <br>
+            <br>
+            <br>Vi sono due definizioni di tipo per dare maggiore leggibilità al programma e una struct che va a definire l'unica tipologia utilizzata per dichiarare oggetti nel programma, ovvero Prodotti.
+            </b></p>
+          </div>
+        </div>
+      </div>	  
+	 
+	  <div id="content">
+        
+		<div class="content_item">
+		  
+		  <h1>Il codice c</h1> 
+	      <p><b>#include &lt;stdio.h&gt;
+<br>#include &lt;stdlib.h&gt;
+<br>#include &lt;string.h&gt;
+<br>typedef float euro;
+<br>typedef long int codice;
+<br>struct prodotto{codice identificativo; char nome[20]; char utilizzo[15]; int pezzi; euro costo;};
+<br>typedef struct prodotto Prodotto;
+<br>void gestione (Prodotto *);
+<br>void scorte (Prodotto *);
+<br>void acquisto (Prodotto *);
+<br>void settore(Prodotto *);
+</b>
+</p>	  
+  </div><!--close wrapper-->
+</body>
+</html>

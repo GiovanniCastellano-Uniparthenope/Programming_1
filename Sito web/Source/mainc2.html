@@ -1,0 +1,99 @@
+<html xml:lang="en">
+<head>
+  <title>Gestione magazzino</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style1.css" />
+</head>
+
+<body>
+  <div id="main">
+	<div id="menubar">
+	  <div id="welcome">
+	    <h1><a href="#">Gestione magazzino</a></h1>
+	  </div>     
+	  <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="magazzinopanoramica.html">Progetto magazzino</a></li>
+          <li><a href="mainc2.html">main.c</a></li>
+          <li><a href="magazzinofunctionc.html">function.c</a></li>
+          <li><a href="magazzinoheaderh.html">header.h</a></li>
+          <li><a href="test2.html">Test</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+      <div id="wrapper">     
+        <h2></h2>
+        <img src="images/magazzino.jpg" alt="Viti" style="width:1120px;height:300px;">
+	  <div class="sidebar_container">       
+		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Descrizione del file</h2>
+              <p><b>Il main è il cuore del programma dato che dal main si chiamano tutte le funzioni necessarie al corretto funzionamento del programma. L'utente, all'avvio, avrà la possibilità di scegliere tra cinque diverse scelte, la prima permette di modificare la quantità o il prezzo del prodotto scelto, la seconda permette di vedere i prodotti sotto scorta, la terza permette di acquistare un prodotto scelto, e infine la quarta permette di inserire un settore e in output mosterà tutti i prodotti con i relativi dati attinenti al settore scelto. L'ultima opzione permette di chiudere il programma tramite esecuzione non tramite troncamento.</b></p>
+          </div>
+        </div>
+      </div>	  
+	 
+	  <div id="content">
+        
+		<div class="content_item">
+		  
+		  <h1>Il codice c</h1> 
+	      <p><b>    #include "magazzinoheader.h"
+<br>void main()
+<br>{
+<br>int choice, breaker=0, i;
+<br>Prodotto product[20]={{816541, "Nastro isolante", "elettronica", 7, 4.30F},
+<br>                      {816732, "Scatola viti", "elettronica", 13, 3.10F},
+<br>                      {816991, "Martello", "muratura", 23, 11.99F},
+<br>                      {816874, "Scatola chiodi", "muratura", 17, 2.99F},
+<br>                      {816222, "Sacco calce", "muratura", 3, 5.50F},
+<br>                      {816969, "Trapano", "muratura", 4, 45.99F},
+<br>                      {816332, "Tubatura interni", "idraulica", 120, 10.40F},
+<br>                      {816333, "Tubatura esterni", "idraulica", 70, 19.80F},
+<br>                      {816441, "Filo di rame", "elettronica", 40, 8.70F},
+<br>                      {816989, "Tagliaerba", "giardinaggio", 0, 340.00F},
+<br>                      {816442, "Kit giardiniere", "giardinaggio", 14, 13.80F},
+<br>                      {816184, "Kit idraulico", "idraulica", 12, 56.70F},
+<br>                      {816533, "Kit elettricista", "elettronica", 11, 48.20F},
+<br>                      {816323, "Kit muratore", "muratura", 18, 44.80F},
+<br>                      {816887, "Stagno", "elettronica", 32, 4.50F},
+<br>                      {816395, "Pennelli", "muratura", 5, 6.20F},
+<br>                      {816889, "Carta vetrata", "muratura", 23, 2.20F},
+<br>                      {816278, "Cavo elettrico", "elettronica", 0, 24.99F},
+<br>                      {816384, "Spago", "giardinaggio", 43, 1.90F},
+<br>                      {816483, "Prato sintetico", "giardinaggio", 70, 5.40F}};
+<br>do
+<br>{
+<br>printf("Gestione magazzino ferramenta\nGiovanni Castellano\n0124001514\n\n"
+<br>       "Codice           Nome\n\n");
+<br>for(i=0; i<20; i++)
+<br>    printf("%-16d %s\n", product[i].identificativo, product[i].nome);
+<br>     printf("\nScegliere quale operazione eseguire:\n"
+<br>           "1) Cerca un prodotto con codice per modificarne la quantita' o il prezzo\n"
+<br>           "2) Visualizza dati dei prodotti sotto scorta\n"
+<br>           "3) Acquista un prodotto\n"
+<br>           "4) Dato un settore, visualizza tutti i prodotti compatibili\n"
+<br>           "5) Esce dal programma\n"
+<br>           "Inserire l'operazione scelta (1,2,3,4 o 5 per uscire): ");
+<br>    scanf("%d", &choice);
+<br>    switch (choice)
+<br>    {
+<br>    case 1 : gestione(product); break;
+<br>    case 2 : scorte(product); break;                                                            
+<br>    case 3 : acquisto(product); break;                                                          
+<br>    case 4 : settore(product); break;                                                           
+<br>    case 5 : breaker = 1; break;
+<br>    default: printf("Si prega di inserire una delle opzioni indicate.\n"); break;
+<br>    }
+<br>    if(breaker !=1)
+<br>        system("PAUSE");
+<br>        system("CLS");
+<br>}while(breaker != 1);
+<br>}
+</b>
+</p>	  
+  </div><!--close wrapper-->
+</body>
+</html>

@@ -1,0 +1,132 @@
+<html xml:lang="en">
+
+<head>
+  <title>Function c del golf</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="main">
+
+	<div id="menubar">
+	  
+	  <div id="welcome">
+	    <h1><a href="#">File main.c</a></h1>
+	  </div>
+      
+	  <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="golfpanoramica.html">Progetto golf</a></li>
+          <li><a href="mainc1.html">main.c</a></li>
+          <li><a href="golffunctionc.html">function.c</a></li>
+          <li><a href="golfheaderh.html">header.h</a></li>
+          <li><a href="test1.html">Test</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+      <div id="wrapper">     
+        <h2></h2>
+        <img src="images/home_1.jpg" alt="Mazza da golf" style="width:1120px;height:300px;">
+	  <div class="sidebar_container">       
+		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Descrizione del file</h2>
+            <p><b>Il file main.c è ovviamente il file principale che esegue tutte le chiamate di funzione e permette l'esecuzione del programma nella sua completezza.
+            <br>
+            <br>
+            <br>Il file parte con la dichiarazione delle variabili e include l'header personale, la matrice campo viene inizializzata solo con i bordi e successivamente la funzione inizializza(char*, Coordinate*, Coordinate*) posiziona il giocatore P in posizione d'inizio 1-1 e la buca in una posizione randomica oltre il 25-25. La funzione che inizializza, insieme ad altre poche assegnazioni che riportano i valori allo stato di default vengono ripetuti ad ogni fine partita in modo tale da poter ricominciare la prossima partita resettando il tutto, dato che sono richieste 10 simulazioni consecutive.
+            <br>
+            <br>
+            <br>Dopo un confronto che controlla se i turni hanno superato il valore 50, si ha la prima strada che porta al calcolo di tutti i nuovi parametri tramite chiamate di funzioni a catena, e la seconda parte che mostra il campo un'ultima volta prima di troncare il ciclo do{}while(); stampando di conseguenza l'esito della partita: laddove si sia fatta buca prima dei 50 turni, il messaggio avviserà l'utente dell'esito positivo, altrimenti verrà stampato il messaggio che avvertirà l'utente che la palla non è arrivata in buca dopo i 50 turni.
+            <br>
+            <br>
+            <br>Ad ogni turno, l'utente verrà avvistato laddove dovesse tirare vento (laddove la funzione traiettoria(int, int*, int*, int*) generasse un valore per cui la palla debba essere deviata), e dopo aver avviato il turno, l'utente verrà avvisato con più precisione riguardo la direzione della deviazione. Inoltre, laddove dovesse esserci il rimbalzo della palla, un ulteriore messaggio in seguito al precedente avviserà l'utente che la palla ha subito un rimbalzo.
+              </b></p>
+          </div>
+        </div>
+      </div>	  
+	 
+	  <div id="content">
+        
+		<div class="content_item">
+		  
+		  <h1>Il codice c</h1> 
+	      <p><b>#include "golfheader.h"
+<br>void main()
+<br>{
+<br>int seed, tr1=0, tr2=0, tr3=0, b1=0, b2=10;
+<br>int n = 50, m = 50;
+<br>int bounce, wind, score, power, direction, risultati[10], partite=0;
+<br>Coordinate player, hole;
+<br>player.x=2;
+<br>player.y=2;
+<br>hole.x=48;
+<br>hole.y=48;
+<br>char field[][50]=Campo inizializzato con una matrice 50x50 con bordi costruiti tramite codice ASCII
+<br>printf("Gioco del golf\nGiovanni Castellano\nMatricola: 0124001514\n\n");
+<br>printf("Regole di gioco: Il bot (P) deve tentare di arrivare in buca (O) nel \n"
+<br>   "minor numero di turni possibile. In caso di errore, la palla verra' \n"
+<br>   "riposizionata vicino al bordo piu' vicino da cui e' uscita.\n"
+<br>   "La deviazione del vento e' determinata in modo casuale,\n"
+<br>   "con una probabilita' del 50%% di non deviare, e del 25%% di andare\n"
+<br>   "a destra o a sinistra della direzione scelta dal bot, e l'utente sara'\n"
+<br>   "avvisato laddove dovesse esserci vento per un determinato turno. La palla,\n"
+<br>   "arrivata a destinazione, puo' rimbalzare in una delle otto caselle adiacenti,\n"
+<br>   "salvo il caso in cui la potenza sara' uguale ad 1. Il campo e' il seguente:\n\n");
+<br>do
+<br>{
+<br>partite++;
+<br>inizializza(&field, &player, &hole);
+<br>score=1;
+<br>campo(&field, n, m);
+<br>system("PAUSE");
+<br>system("CLS");
+<br>do
+<br>{
+<br>if(score <= 50)
+<br>{
+<br>    printf("Turno %d\n", score);
+<br>    seed = time(NULL);
+<br>    wind = traiettoria(seed, &tr1, &tr2, &tr3);
+<br>    power = forza(seed);
+<br>    direction = direzione(player.x, player.y, hole.x, hole.y);
+<br>    bounce = calcolorimbalzo(seed, &b1, &b2);
+<br>    field[player.y][player.x] = ' ';
+<br>    posizione(&player.x, &player.y, power, wind, bounce, direction);
+<br>    field[player.y][player.x] = 'P';
+<br>    campo(&field, n, m);
+<br>    if(wind == destra )
+<br>        printf("||ATTENZIONE|| Il vento ha deviato la traiettoria della palla verso destra!\n");
+<br>    else if(wind == sinistra)
+<br>        printf("||ATTENZIONE|| Il vento ha deviato la traiettoria della palla verso sinistra!\n");
+<br>    if(bounce != 0)
+<br>        printf("||ATTENZIONE|| La palla ha subito un rimbalzo!\n");
+<br>    printf("La palla e' avanzata di %d celle\n", power);
+<br>    score = score + 1;                                                                                 
+<br>    system("PAUSE");
+<br>    if(player.x != hole.x || player.y != hole.y)
+<br>        system("CLS");
+<br>}
+<br>else                                                                                                   
+<br>{
+<br>    campo(&field, n, m);
+<br>    break;
+<br>}
+<br>}while(player.x != hole.x || player.y != hole.y);
+<br>if(score < 50)
+<br>printf("\nBUCA! Partita finita!\n\nIl giocatore ha totalizzato un punteggio di %d\n\n", score-1);
+<br>else
+<br>printf("La partita e' finita per eccesso di turni utilizzati (%d turni)\n\n", score-1);
+<br>system("PAUSE");
+<br>risultati[partite-1]=score;
+<br>system("CLS");
+<br>}while(partite<=10);
+<br>stamparisultati(&risultati);
+<br>}
+</b></p> 
+  </div><!--close wrapper-->
+</body>
+</html>

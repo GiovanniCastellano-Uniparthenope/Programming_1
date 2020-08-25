@@ -1,0 +1,274 @@
+<html xml:lang="en">
+
+<head>
+  <title>Function c del golf</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="main">
+
+	<div id="menubar">
+	  
+	  <div id="welcome">
+	    <h1><a href="#">File golffunction.c</a></h1>
+	  </div>
+      
+	  <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="golfpanoramica.html">Progetto golf</a></li>
+          <li><a href="mainc1.html">main.c</a></li>
+          <li><a href="golffunctionc.html">function.c</a></li>
+          <li><a href="golfheaderh.html">header.h</a></li>
+          <li><a href="test1.html">Test</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+      <div id="wrapper">     
+        <h2></h2>
+        <img src="images/home_1.jpg" alt="Mazza da golf" style="width:1120px;height:300px;">
+	  <div class="sidebar_container">       
+		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Descrizione del file</h2>
+            <p><b>Il file golffunction.c presenta tutte le funzioni utilizzate dal file main.c e che son fondamentali per il corretto funzionamento del programma. 
+            <br>
+            <br>
+            <br>La prima funzione del file è la traiettoria(int, int*, int*, int*), che decide automaticamente se deviare il lancio della palla. Si usano tre variabili c1, c2 e c3 per aumentare la variabilità dei valori generati dalla funzione standard c rand(), che altrimenti risulterebbero sequenziali e, nonostante non debbano essere mostrati direttamente a schermo, causerebbero scelte simili continue in poco lasso di tempo tra le varie chiamate.
+            <br>
+            <br>
+            <br>Successivamente, vi è la funzione calcolorimbalzo(int, int*, int*) che stabilisce se far rimbalzare la palla una volta arrivata a terra, e utilizza i due parametri r1 e r2 per variare i valori generati dalla funzione standard c rand(), che anche in questo caso risulterebbero essere consecutivi. La funzione, laddove soddisfi la condizione e generi il valore, modifica r1 e r2 in modo tale da forzare il nuovo valore ad essere compreso tra i due nuovi valori, distanti dai precedenti di 10.
+            <br>
+            <br>
+            <br>Dopo la funzione per il calcolo del rimbalzo, vi è la funzione campo(char*, int, int), funzione molto semplice ma fondamentale, dato che mostra in output il campo da gioco rendendo l'utente cosciente di ciò che il programma sta eseguendo.
+            <br>
+            <br>
+            <br>La funzione posizione(int*, int*, int, int, int, int) invece è la più complessa dato che, calcolati i parametri dalle altre funzioni, calcola la nuova posizione del giocatore P, riposizionandolo in campo laddove sia uscito fuori per via del vento o del rimbalzo inaspettati.
+            <br>
+            <br>
+            <br>La funzione direzione(int, int, int, int) è l'intelligenza del programma che dirige il tiro sempre verso la buca, gestito in base alle coordinate del giocatore e alle coordinate della buca. Non ha parametri randomici, ma la sua scelta è poi condizionata dalle altre funzioni.
+            <br>
+            <br>
+            <br>La funzione forza(int) restituisce un valore che equivale a quante caselle la palla dovrà avanzare nella direzione scelta dalla funzione direzione(int, int, int, int) e non prevede accorgimenti per la funzione standard c rand(), dato che la ripetizione dello stesso valore non è sensibile all'utente nè al fine del programma.
+            <br>
+            <br>
+            <br>Inoltre, la funzione inizializza(char*, Coordinate*, Coordinate*) inizializza ad ogni chiamata il campo con la posizione del giocatore in 1-1 e la posizione della buca generata randomicamente.
+            <br>
+            <br>
+            <br>Infine, la funzione stamparisultati(int*) prende in input per riferimento l'array contenente tutti i risultati delle 10 simulazioni, e tramite algoritmo di ordinamento per selezione di minimo, ordina l'array e mostra i risultati in ordine crescente, puntualizzando quali risultati son dovuti ad un eccesso di turni e quali invece son punteggi dovuti al raggiungimento del giocatore P in buca O.
+             </b> </p>
+          </div>
+        </div>
+      </div>	  
+	 
+	  <div id="content">
+        
+		<div class="content_item">
+		  
+		  <h1>Il codice c</h1> 
+	      <p><b>#include "golfheader.h"
+<br>int traiettoria(int seed, int *c1, int *c2, int *c3)
+<br>{
+<br>int mira;
+<br>srand(seed);
+<br>if(*c1 < 3 && *c2 < 3 && *c3 < 3)
+<br>{
+<br>    mira = 1+rand()%100;
+<br>} else if(*c1 >= 3)
+<br>{
+<br>      mira = 51+rand()%49;
+<br>      *c1 = 0;
+<br>  } else if(*c2 >= 3)
+<br>    {
+<br>        mira = 76+rand()%24;
+<br>        *c2 = 0;
+<br>    } else if(*c3 >= 3)
+<br>        {
+<br>            mira = 1+rand()%75;
+<br>            *c3 = 0;
+<br>        }
+<br>if(mira <= 50)
+<br>{
+<br>    *c1 = *c1 + 1;
+<br>    return diritto;
+<br>} else if (mira > 50 && mira <= 75)
+<br>    {
+<br>        *c2 = *c2 + 1;
+<br>        printf("||TIRA UN FORTE VENTO||\n\n");
+<br>        return sinistra;
+<br>    }else if (mira > 75)
+<br>        {
+<br>            *c3 = *c3 + 1;
+<br>            printf("||TIRA UN FORTE VENTO||\n\n");
+<br>            return destra;
+<br>        }
+<br>return 0;
+<br>}
+<br>
+<br>
+<br>int calcolorimbalzo(int seed, int *r1, int *r2)
+<br>{
+<br>int rimbalzo, prob;
+<br>srand(seed);
+<br>prob = 1+rand()%100;
+<br>if(prob < *r2 && prob > *r1)
+<br>{
+<br>    srand(seed);
+<br>    rimbalzo = 1+rand()%8;
+<br>    if(*r2 <= 90)
+<br>    {
+<br>        *r1 = *r1 + 10;
+<br>        *r2 = *r2 + 10;
+<br>} else
+<br>        {
+<br>            *r1 = 0;
+<br>            *r2 = 10;
+<br>        }
+<br>    return rimbalzo;
+<br>}
+<br>else
+<br>{
+<br>    return 0;
+<br>}
+<br>}
+<br>
+<br>
+<br>void campo(char *field, int n, int m)
+<br>{
+<br>int i, j;
+<br>for(i=0; i<n; i++)
+<br>{
+<br>    printf("\n");
+<br>    for(j=0; j<m; j++)
+<br>    {
+<br>        printf("%c", *(field+m*i+j));
+<br>    }
+<br>}
+<br>printf("\n");
+<br>}
+<br>
+<br>
+<br>void posizione(int *x, int *y, int potenza, int vento, int rimbalzo, int direzione)
+<br>{
+<br>switch (vento)
+<br>{
+<br>    case sinistra : if(direzione < 8){direzione = direzione + 1;}else{direzione = 1;} break;
+<br>    case destra : if(direzione > 1){direzione = direzione - 1;}else{direzione = 8;} break;
+<br>    default: break;
+<br>}
+<br>switch (direzione)
+<br>{
+<br>    case N : *y = *y - potenza; break;
+<br>    case NE : *x = *x + potenza; *y = *y - potenza; break;
+<br>    case E : *x = *x + potenza; break;
+<br>    case SE : *x = *x + potenza; *y = *y + potenza; break;
+<br>    case S : *y = *y + potenza; break;
+<br>    case SW : *x = *x - potenza; *y = *y + potenza; break;
+<br>    case W : *x = *x - potenza; break;
+<br>    case NW : *x = *x - potenza; *y = *y - potenza; break;
+<br>    default: printf("C'e' stato un errore nel calcolo della nuova posizione"); exit(-1);
+<br>}
+<br>if(potenza > 1)
+<br>{
+<br>    switch (rimbalzo)
+<br>    {
+<br>        case N : *y = *y - 1; break;
+<br>        case NE : *x = *x + 1; *y = *y - 1; break;
+<br>        case E : *x = *x + 1; break;
+<br>        case SE : *x = *x + 1; *y = *y + 1; break;
+<br>        case S : *y = *y + 1; break;
+<br>        case SW : *x = *x - 1; *y = *y + 1; break;
+<br>        case W : *x = *x - 1; break;
+<br>        case NW : *x = *x - 1; *y = *y - 1; break;
+<br>        default: break;
+<br>    }
+<br>}
+<br>if(*x > 48)
+<br>{
+<br>   *x = 48;
+<br>}else if(*x < 1)
+<br>    {
+<br>        *x = 1;
+<br>    }
+<br>if(*y > 48)
+<br>{
+<br>   *y = 48;
+<br>}else if(*y < 1)
+<br>    {
+<br>        *y = 1;
+<br>    }
+<br>}
+<br>
+<br>int direzione(int xp, int yp, int xh, int yh)
+<br>{
+<br>if(yh > yp && xh > xp)
+<br>    return SE;
+<br>else if(yh < yp && xh == xp)
+<br>    return N;
+<br>else if(yh < yp && xh > xp)
+<br>    return NE;
+<br>else if(yh == yp && xh > xp)
+<br>    return E;
+<br>else if(yh > yp && xh == xp)
+<br>    return S;
+<br>else if(yh > yp && xh < xp)
+<br>    return SW;
+<br>else if(yh == yp && xh < xp)
+<br>    return W;
+<br>else if(yh < yp && xh < xp)
+<br>    return NW;
+<br>return 0;
+<br>}
+<br>
+<br>
+<br>int forza(int seed)
+<br>{
+<br>int potenza;
+<br>srand(seed);
+<br>potenza = 1+rand()%4;
+<br>return potenza;
+<br>}
+<br>
+<br>void inizializza(char *field, Coordinate *giocatore, Coordinate *buca)
+<br>{
+<br>int seed;
+<br>*(field+(giocatore->y)*50+(giocatore->x))=' ';
+<br>*(field+(buca->y)*50+(buca->x))=' ';
+<br>seed = time(NULL);
+<br>srand(seed);
+<br>giocatore->x = 1;
+<br>giocatore->y = 1;
+<br>buca->x = 25+rand()%23;
+<br>buca->y = 25+rand()%23;
+<br>*(field+(giocatore->y)*50+(giocatore->x))='P';
+<br>*(field+(buca->y)*50+(buca->x))='O';
+<br>}
+<br>
+<br>void stamparisultati(int *array)
+<br>{
+<br>int i, j, minimo, appoggio;
+<br>for(i=0; i<10; i++)
+<br>{
+<br>    minimo=i;
+<br>    for(j=i; j<10; j++)
+<br>    {
+<br>        if(*(array+minimo)>*(array+j))
+<br>            minimo=j;
+<br>    }
+<br>    appoggio=*(array+minimo);
+<br>    *(array+minimo)=*(array+i);
+<br>    *(array+i)=appoggio;
+<br>}
+<br>for(i=0; i<10; i++)
+<br>{
+<br>    (*(array+i)<=50)?printf("Punteggio %d: %d\n", i+1, *(array+i)):printf("Punteggio %d: %d (partita finita per eccesso turni)\n", i+1, *<br>(array+i));
+<br>    }
+<br>}
+</b>
+</p>	  
+  </div><!--close wrapper-->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<html xml:lang="en">
+
+<head>
+  <title>Function c del golf</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="main">
+
+	<div id="menubar">
+	  
+	  <div id="welcome">
+	    <h1><a href="#">File golfheader.h</a></h1>
+	  </div>
+      
+	  <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="golfpanoramica.html">Progetto golf</a></li>
+          <li><a href="mainc1.html">main.c</a></li>
+          <li><a href="golffunctionc.html">function.c</a></li>
+          <li><a href="golfheaderh.html">header.h</a></li>
+          <li><a href="test1.html">Test</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+      <div id="wrapper">     
+        <h2></h2>
+        <img src="images/home_1.jpg" alt="Mazza da golf" style="width:1120px;height:300px;">
+	  <div class="sidebar_container">       
+		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Descrizione del file</h2>
+            <p><b>Il file golfheader.h è l'header personale che contiene tutte le librerie standard e prototipi di funzioni programmate utili per il corretto funzionamento del programma.
+            <br>
+            <br>
+            <br>Le librerie standard del c e di i/o son il pane quotidiano di ogni programma c, e contengono gran parte delle funzioni standard che vengono utilizzate. Le altre librerie incluse nel progetto sono la time.h, per poter generare il seed per la funzione standard rand(), la string.h per poter utilizzare le funzioni di gestione di stringhe e la math.h per utilizzare funzioni di calcolo più avanzate.
+            <br>
+            <br>
+            <br>Inoltre, nell'header, vi sono anche le definizioni di nuovi tipi di dato, con enum col fine di dare maggiore leggibilità al programma e la struct coordinata, definita come tipo Coordinate, utile per la dichiarazione delle due variabili che volgono la loro utilità a stabilire le coordinate sul campo del giocatore e della buca (quindi che utilizzano due campi, x e y).
+              </b></p>
+          </div>
+        </div>
+      </div>	  
+	 
+	  <div id="content">
+        
+		<div class="content_item">
+		  
+		  <h1>Il codice c</h1> 
+	      <p><b>#include &lt;stdio.h&gt;
+<br>#include &lt;stdlib.h&gt;
+<br>#include &lt;math.h&gt;
+<br>#include &lt;time.h&gt;
+<br>#include &lt;string.h&gt;
+<br>typedef enum {N=1, NE, E, SE, S, SW, W, NW}Puntocardinale;
+<br>typedef enum {putter=1, ibrido, wedge, ferro, legno}Materiale;
+<br>typedef enum {diritto=1, sinistra, destra}Deviazione;
+<br>struct coordinata{int x; int y;};
+<br>typedef struct coordinata Coordinate;
+<br>int traiettoria(int, int *, int *, int *);
+<br>int calcolorimbalzo(int, int *, int *);
+<br>int direzione(int, int, int, int);
+<br>int forza(int);
+<br>void campo(char *, int, int);
+<br>void posizione(int *, int *, int, int, int, int);
+<br>void inizializza(char *, Coordinate *, Coordinate *);
+<br>void stamparisultati(int *);
+</b></p> 
+  </div><!--close wrapper-->
+</body>
+</html>

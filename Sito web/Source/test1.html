@@ -1,0 +1,80 @@
+<html xml:lang="en">
+
+<head>
+  <title>Esecuzione del programma</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <div id="main">
+
+	<div id="menubar">
+	  
+	  <div id="welcome">
+	    <h1><a href="#">Fase di esecuzione</a></h1>
+	  </div>
+      
+	  <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="golfpanoramica.html">Progetto golf</a></li>
+          <li><a href="mainc1.html">main.c</a></li>
+          <li><a href="golffunctionc.html">function.c</a></li>
+          <li><a href="golfheaderh.html">header.h</a></li>
+          <li><a href="test1.html">Test</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+      <div id="wrapper">     
+        <h2></h2>
+        <img src="images/home_1.jpg" alt="Mazza da golf" style="width:1120px;height:300px;">
+	  <div class="sidebar_container">       
+		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Comportamento d'esecuzione</h2>
+            <p><b>Il programma, appena avviato, mostra le regole di gioco ed il campo inizializzato con il giocatore in posizione di partenza e la buca generata casualmente. I turni passano premendo ENTER.
+            <br>
+            <br>
+            <br>Il caso standard si ha quando le funzioni che determinano le deviazioni, generano valori tali da non far deviare la palla, nè in direzione, nè in rimbalzo una volta raggiunta la destinazione. 
+            <br>
+            <br>
+            <br>Nel caso in cui prima di mostrare il campo, viene stampata la dicitura "TIRA UN FORTE VENTO" significa che la direzione scelta dalla funzione che punta sempre alla buca sarà spostata verso sinistra o verso destra, e dopo aver avviato il turno, verrà effettivamente specificata la nuova direzione puntualizzando se il vento ha spostato la traiettoria verso sinistra o verso destra. Il rimbalzo anche viene deciso dalle funzioni analizzate nella label golffunction.c, però viene stabilito una volta che la palla tocca terra, per cui non si avvisa l'utente prima di effettuare il lancio, ma solo dopo, come mostrato nel terzo screenshot.
+            <br>
+            <br>
+            <br>La palla può raggiungere o meno la buca, dato che deve farlo entro i 50 turni, altrimenti la partita finisce con una sconfitta. Laddove la partita risultasse in una vittoria, l'utente verrà avvisato come nello screenshot 4, altrimenti, in caso di sconfitta, l'utente vedrà apparire il messaggio come nello screenshot 5.
+            <br>
+            <br>
+            <br>Il programma simula 10 gare, e mostra alla fine i punteggi ottenuti nelle gare in ordine crescente, come mostrato nello screenshot 6. In totale si avranno sempre 10 punteggi, ma i punteggi stessi variano molto da esecuzione ad esecuzione, dato che il bot automatico costituito da tutte le funzioni di scelta può riuscire a fare buca in una ventina di turni, quanto potrebbe non riuscire affatto nell'impresa, andando oltre i 50 turni, con conseguente sconfitta.
+            </b></p>
+          </div>
+        </div>
+      </div>	  
+	 
+	  <div id="content">
+        
+		<div class="content_item">
+		  
+		  <h1>Screenshot</h1>
+            <p><b>Il programma alla prima esecuzione si presenta così</b></p>
+             <h2></h2>
+        <img src="images/golf_inizio.jpg" alt="Inizio partita" style="width:600px;height:800px;">
+            <p><b><br><br>Il caso standard senza deviazioni non mostra messaggi aggiuntivi</b></p>
+             <h2></h2>
+        <img src="images/golf_caso_standard.jpg" alt="Standard" style="width:600px;height:800px;">
+            <p><b><br><br>Nel caso vi siano deviazioni per vento o rimbalzo, l'utente verrà avvisato</b></p>
+             <h2></h2>
+        <img src="images/golf_caso_ventoconrimbalzo.jpg" alt="Deviazioni" style="width:600px;height:800px;">
+            <p><b><br><br>In caso di vittoria, verrà stampato il seguente messaggio</b></p>
+             <h2></h2>
+        <img src="images/golf_caso_vittoria.jpg" alt="Vittoria" style="width:600px;height:800px;">
+            <p><b><br><br>In caso di sconfitta, verrà stampato il seguente messaggio</b></p>
+             <h2></h2>
+        <img src="images/golf_caso_sconfitta.jpg" alt="Sconfitta" style="width:600px;height:800px;">
+            <p><b><br><br>A fine partita, verranno mostrati i punteggi di tutte e 10 le gare</b></p>
+             <h2></h2>
+        <img src="images/golf_caso_finepartita.jpg" alt="Esiti" style="width:600px;height:250px;"> 
+  </div><!--close wrapper-->
+</body>
+</html>

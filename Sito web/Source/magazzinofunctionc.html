@@ -1,0 +1,168 @@
+<html xml:lang="en">
+<head>
+  <title>Gestione magazzino</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style1.css" />
+</head>
+
+<body>
+  <div id="main">
+	<div id="menubar">
+	  <div id="welcome">
+	    <h1><a href="#">Gestione magazzino</a></h1>
+	  </div>     
+	  <div id="menu_items">
+	    <ul id="menu">
+          <li class="current"><a href="magazzinopanoramica.html">Progetto magazzino</a></li>
+          <li><a href="mainc2.html">main.c</a></li>
+          <li><a href="magazzinofunctionc.html">function.c</a></li>
+          <li><a href="magazzinoheaderh.html">header.h</a></li>
+          <li><a href="test2.html">Test</a></li>
+        </ul>
+      </div>
+	  
+    </div>
+      <div id="wrapper">     
+        <h2></h2>
+        <img src="images/magazzino.jpg" alt="Viti" style="width:1120px;height:300px;">
+	  <div class="sidebar_container">       
+		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Descrizione del file</h2>
+            <p><b>Il file magazzinofunction.c presenta al suo interno tutte le funzioni necessarie al corretto funzionamento del programma. 
+            <br>
+            <br>
+            <br>La prima funzione è la gestione(Prodotto*) che permette all'utente di inserire un codice dalla lista e successivamente, se il codice inserito corrisponde ad uno della lista, permette di modificare quantità o prezzo del prodotto in questione.
+            <br>
+            <br>
+            <br>La successiva funzione è la funzione scorte(Prodotto*) che, laddove venga richiamata, stampa su schermo tutti i prodotti che hanno una quantità in magazzino minore o uguale a 5. L'output della funzione varia laddove si dovesse richiamare una funzione tra gestione(Prodotto*) e acquisto(Prodotto*).
+            <br>
+            <br>
+            <br>L'ultima funzione è la funzione settore(Prodotti*) che chiede all'utente di inserire una stringa corrispondente ad una delle quattro mostrate, e ogni stringa equivale ad un settore. Dopo aver portato tutta la stringa a minuscolo, controlla con quale settore corrisponde, mostrando tutti i prodotti attinenti. In caso non ci siano corrispondenze, la funzione chiederà di reinserire la stringa</b></p>
+          </div>
+        </div>
+      </div>	  
+	 
+	  <div id="content">
+        
+		<div class="content_item">
+		  
+		  <h1>Il codice c</h1> 
+	      <p><b>#include "magazzinoheader.h"
+<br>void gestione(Prodotto *prodotti)
+<br>{
+<br>int i, scelta, stop=0;
+<br>codice identificatore;
+<br>do
+<br>{
+<br>printf("Inserire il codice del prodotto: ");
+<br>scanf("%ld", &identificatore);
+<br>for(i=0; i<20; i++)
+<br>{
+<br>    if(prodotti[i].identificativo == identificatore)
+<br>    {
+<br>        stop = 1;
+<br>        printf("\nCodice prodotto: %ld\n"
+<br>               "Nome prodotto: %s\n"
+<br>               "Utilizzo prodotto: %s\n"
+<br>               "Quantita' prodotto: %d\n"
+<br>               "Prezzo prodotto: %3.2f Euro\n\n", prodotti[i].identificativo, prodotti[i].nome, prodotti[i].utilizzo, prodotti[i].pezzi, prodotti[i].costo);
+<br>               printf("\nScegliere cosa fare:\n"
+<br>               "1) Cambia la quantita'\n"
+<br>               "2) Cambia il prezzo\n"
+<br>               "3) Torna indietro\n"
+<br>               "Operazione scelta: ");
+<br>        do{
+<br>        scanf("%d", &scelta);
+<br>        if(scelta != 1 && scelta != 2 && scelta != 3)
+<br>            printf("Si prega di inserire una delle operazioni sopra elencate.\nOperazione scelta: ");
+<br>        }while(scelta != 1 && scelta != 2 && scelta != 3);
+<br>        switch (scelta)
+<br>        {
+<br>            case 1 : printf("Inserire la nuova quantita': "); scanf("%d", &prodotti[i].pezzi); printf("\nLa quantita' e' stata cambiata.\n"); printf("\nCodice prodotto: %ld\nNome prodotto: %s\nUtilizzo prodotto: %s\nQuantita' prodotto: %d\nPrezzo prodotto: %3.2f Euro\n\n", prodotti[i].identificativo, prodotti[i].nome, prodotti[i].utilizzo, prodotti[i].pezzi, prodotti[i].costo); break;
+<br>            case 2 : printf("Inserire il nuovo prezzo: "); scanf("%f", &prodotti[i].costo); printf("\nIl prezzo e' stato cambiato.\n"); printf("\nCodice prodotto: %ld\nNome prodotto: %s\nUtilizzo prodotto: %s\nQuantita' prodotto: %d\nPrezzo prodotto: %3.2f Euro\n\n", prodotti[i].identificativo, prodotti[i].nome, prodotti[i].utilizzo, prodotti[i].pezzi, prodotti[i].costo); break;
+<br>            case 3 : break;
+<br>            default: break;
+<br>        }
+<br>    }
+<br>}
+<br>if(stop != 1)
+<br>    printf("\nSi prega di inserire un codice dalla lista soprastante.\n");
+<br>}while(stop != 1);
+<br>}
+<br>
+<br>
+<br>void scorte(Prodotto *prodotti)
+<br>{
+<br>int i;
+<br>printf("\nI seguenti prodotti scarseggiano nel magazzino (numero scorte minore o uguale a 5).\n");
+<br>for(i=0; i<20; i++){
+<br>    if(prodotti[i].pezzi <= 5)
+<br>    {
+<br>        printf("\nCodice prodotto: %ld\n"
+<br>               "Nome prodotto: %s\n"
+<br>               "Utilizzo prodotto: %s\n"
+<br>               "Quantita' prodotto: %d\n"
+<br>               "Prezzo prodotto: %3.2f Euro\n\n", prodotti[i].identificativo, prodotti[i].nome, prodotti[i].utilizzo, prodotti[i].pezzi, prodotti[i].costo);
+<br>       }
+<br>}
+<br>}
+<br>
+<br>
+<br>void acquisto(Prodotto *prodotti)
+<br>{
+<br>int i, quantita;
+<br>float totale;
+<br>codice identificatore;
+<br>printf("Inserire il codice del prodotto da acquistare: ");
+<br>scanf("%ld", &identificatore);
+<br>printf("Inserire la quantita' di prodotti da acquistare (o metri di prodotto): ");
+<br>scanf("%d", &quantita);
+<br>for(i=0; i<20; i++){
+<br>    if(prodotti[i].identificativo == identificatore){
+<br>    if(prodotti[i].pezzi >= quantita)
+<br>    {
+<br>        totale = quantita * prodotti[i].costo;
+<br>        prodotti[i].pezzi = prodotti[i].pezzi - quantita;
+<br>        printf("\nSono stati acquistati %d pezzi del prodotto %s con\nun costo di %4.2f Euro; le scorte rimanenti sono %d\n\n", quantita,prodotti[i].nome, totale, prodotti[i].pezzi);
+<br>    }
+<br>    else if(prodotti[i].pezzi == 0)
+<br>        printf("\nLe scorte del prodotto %s sono esaurite\n\n", prodotti[i].nome);
+<br>    else if(prodotti[i].pezzi < quantita)
+<br>        printf("\nNon vi sono abbastanza scorte in magazzino per completare la transizione.\n\n");
+<br>    }
+<br>}
+<br>}
+<br>
+<br>
+<br>void settore(Prodotto *prodotti)
+<br>{
+<br>int i;
+<br>char ambito[15];
+<br>printf("Inserire un settore tra idraulica, elettronica, muratura e giardinaggio.\nSettore scelto: ");
+<br>fflush(stdin);
+<br>do
+<br>{
+<br>gets(ambito);
+<br>strlwr(ambito);
+<br>if(strcmp(ambito, "muratura")!=0 && strcmp(ambito, "idraulica")!=0 && strcmp(ambito, "elettronica")!=0 && strcmp(ambito, "giardinaggio")!=0)
+<br>    printf("Il campo inserito non esiste, si prega di riprovare.\n");
+<br>}while(strcmp(ambito, "muratura")!=0 && strcmp(ambito, "idraulica")!=0 && strcmp(ambito, "elettronica")!=0 && strcmp(ambito, "giardinaggio")!=0);
+<br>    printf("Tutti i prodotti dell'ambito %s:\n\n", ambito);
+<br>    for(i=0; i<20; i++)
+<br>    {
+<br>        if(strcmp(ambito, prodotti[i].utilizzo)==0)
+<br>        {
+<br>            printf("Codice prodotto: %ld\n"
+<br>                   "Nome prodotto: %s\n"
+<br>                   "Quantita' prodotto: %d\n"
+<br>                   "Prezzo prodotto: %3.2f Euro\n\n", prodotti[i].identificativo, prodotti[i].nome, prodotti[i].pezzi, prodotti[i].costo);
+<br>        }
+<br>    }
+<br>}
+</b>
+</p>	  
+  </div><!--close wrapper-->
+</body>
+</html>

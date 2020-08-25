@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1488532288 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\gestione magazzino ferramenta\magazzino\magazzinofunction.c
+
+1498228118 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\gestione magazzino ferramenta\magazzinofunction.c
+	"magazzinoheader.h"
+
+1498228062 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\gestione magazzino ferramenta\main.c
+	"magazzinoheader.h"
+
+1498228062 c:\users\giovanni c\desktop\relazione_castellano_giovanni\gestione magazzino ferramenta\magazzinoheader.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1498228062 source:c:\users\giovanni c\desktop\gestione magazzino ferramenta\main.c
+	"magazzinoheader.h"
+
+1498228062 c:\users\giovanni c\desktop\gestione magazzino ferramenta\magazzinoheader.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1498228118 source:c:\users\giovanni c\desktop\gestione magazzino ferramenta\magazzinofunction.c
+	"magazzinoheader.h"
+

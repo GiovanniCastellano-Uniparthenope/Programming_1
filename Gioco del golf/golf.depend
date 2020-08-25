@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1488465562 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\golf\golffunction.c
+	"golfheader.h"
+
+1488467075 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\golf\main.c
+	"golfheader.h"
+
+1488464057 c:\users\giovanni c\desktop\relazione_castellano_giovanni\golf\golfheader.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	<string.h>
+
+1498820797 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\gioco del golf 2\main.c
+	"golfheader.h"
+
+1498820119 c:\users\giovanni c\desktop\relazione_castellano_giovanni\gioco del golf 2\golfheader.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	<string.h>
+
+1498820358 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\gioco del golf 2\golffunction.c
+	"golfheader.h"
+
+1498225670 source:c:\users\giovanni c\desktop\gioco del golf 2\golffunction.c
+	"golfheader.h"
+
+1498225689 c:\users\giovanni c\desktop\gioco del golf 2\golfheader.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	<string.h>
+
+1498218151 source:c:\users\giovanni c\desktop\gioco del golf 2\main.c
+	"golfheader.h"
+
+1498821065 source:c:\users\giovanni c\desktop\relazione_castellano_giovanni\gioco del golf\golffunction.c
+	"golfheader.h"
+
+1498820119 c:\users\giovanni c\desktop\relazione_castellano_giovanni\gioco del golf\golfheader.h
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
+	<string.h>
+
